@@ -1,8 +1,6 @@
 namespace MartenDB.Models;
 
-public record UserDetails()
+public record UserDetailsModel(string Name, int Age)
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public int Age { get; set; }
+    public Guid Id = new Guid();
 };
