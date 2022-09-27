@@ -26,27 +26,10 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapGet("/", () => "Welcome to index page.");
 app.MapGet("/api", () => "Welcome to api page.");
 
-app.MapGet("/api/create", async (IDocumentSession session) =>
-{
-    var userDetails = new UserDetailsModel("Edet Eket", 40);
-    session.Store(userDetails);
-    await session.SaveChangesAsync();
-    return "User Created Successfully....\nIdentification String: " + userDetails.Id;
-});
-
-app.MapGet("/api/list", (IDocumentSession session) =>
-{
-    return session.Query<UserDetailsModel>().ToList();
-});
-
-app.MapGet("/api/user/{id}", (Guid id, IDocumentSession session) =>
-{
-    return session.Load<UserDetailsModel>(id);
-});
-
+app.MapControllers();
 app.Run();
