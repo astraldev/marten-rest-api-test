@@ -24,9 +24,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-// app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapGet("/", () => "Welcome to index page.");
 app.MapGet("/api", () => "Welcome to api page.");
